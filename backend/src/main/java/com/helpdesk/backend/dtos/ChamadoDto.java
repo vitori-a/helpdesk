@@ -1,32 +1,21 @@
-package com.helpdesk.backend.models;
+package com.helpdesk.backend.dtos;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.helpdesk.backend.enums.Prioridade;
 import com.helpdesk.backend.enums.Status;
-import jakarta.persistence.*;
+import com.helpdesk.backend.models.Cliente;
+import com.helpdesk.backend.models.Tecnico;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "chamado")
-public class Chamado {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ChamadoDto {
     private Long id;
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento = LocalDate.now();
     private Prioridade prioridade;
     private Status status;
     private String titulo;
     private String observacoes;
-    @ManyToOne
-    @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public Long getId() {

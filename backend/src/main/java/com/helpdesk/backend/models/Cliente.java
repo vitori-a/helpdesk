@@ -10,10 +10,13 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Cliente extends Pessoa{
+public class Cliente extends Usuario {
 
     @OneToMany(mappedBy = "cliente")
     private List<Chamado> chamados = new ArrayList<>();
+
+    public Cliente() {
+    }
 
     public Cliente(Long id, String nome, String cpf, String email, String senha, Set<Perfil> perfis, LocalDate dataCriacao) {
         super(id, nome, cpf, email, senha, perfis, dataCriacao);

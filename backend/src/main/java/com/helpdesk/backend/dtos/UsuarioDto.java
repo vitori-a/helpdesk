@@ -1,43 +1,19 @@
-package com.helpdesk.backend.models;
+package com.helpdesk.backend.dtos;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.helpdesk.backend.enums.Perfil;
-import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "pessoa")
-public class Pessoa {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UsuarioDto {
     private Long id;
     private String nome;
     private String cpf;
     private String email;
     private String senha;
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "perfis")
     private Set<Perfil> perfis = new HashSet<>();
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
-
-    public Pessoa() {
-    }
-
-    public Pessoa(Long id, String nome, String cpf, String email, String senha, Set<Perfil> perfis, LocalDate dataCriacao) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
-        this.senha = senha;
-        this.perfis = perfis;
-        this.dataCriacao = dataCriacao;
-    }
 
     public Long getId() {
         return id;
