@@ -1,8 +1,8 @@
 package com.helpdesk.backend.services;
 
-import com.helpdesk.backend.models.Cliente;
 import com.helpdesk.backend.models.Usuario;
 import com.helpdesk.backend.repositories.UsuarioRepository;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
